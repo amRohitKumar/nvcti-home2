@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
-import BannerImg from '../../assets/img.jpg';
 
-export const BannerBox = styled(Box)({
+export const BannerBox = styled(Box)(({imgurl}) => ({
     // border: '2px solid red',
     height: '50vh',
-    backgroundImage: `url(${BannerImg})`,
+    backgroundImage: `url(${imgurl})`,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
@@ -32,4 +31,4 @@ export const BannerBox = styled(Box)({
             width: '100%',
         }
     }
-});
+}));

@@ -1,22 +1,29 @@
-import { Typography } from "@mui/material";
-import { ContentDiv } from "./content-box";
+import { Box } from "@mui/material";
+import styled from "@emotion/styled";
 
-const ContentBox = () => {
-  return (
-    <ContentDiv>
-      <Typography variant="h4" className="title" >
-        Subheading 1
-      </Typography>
-      <Typography variant="body1" className="content">
-        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-        blanditiis tenetur unde suscipit, quam beatae rerum inventore
-        consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-        fugiat deleniti? Eum quasi quidem quibusdam.
-        <br/>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius exercitationem, harum dicta similique natus doloremque maiores perferendis itaque quaerat mollitia eaque maxime fugiat nulla possimus, officia aspernatur praesentium at! Voluptatem corrupti accusamus obcaecati culpa totam saepe perspiciatis necessitatibus vitae minus repellendus reiciendis quis corporis quisquam, autem tempora laborum, recusandae eius!
-      </Typography>
-    </ContentDiv>
-  );
-};
+export const ContentDiv = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "2em 2em",
+  gap: "3rem",
 
-export default ContentBox;
+  ".title": {
+    marginBottom: "auto",
+    color: "rgb(34, 139, 34)",
+    letterSpacing: "1.5px",
+  },
+  ".content": {
+    width: "50%",
+    letterSpacing: "1.25px",
+    wordSpacing: "2px",
+    color: "rgb(82, 82, 82)",
+  },
+
+  "@media (max-width: 900px)": {
+    flexDirection: "column",
+    ".content": {
+      width: "100%",
+    },
+  },
+});

@@ -1,3 +1,4 @@
-import ContentBox from "./content-box/style";
+import ContentBox from "./content-box/content-box";
+import AboutBanner from "./about-banner/banner";
 
-export { ContentBox };
+export { ContentBox, AboutBanner };
