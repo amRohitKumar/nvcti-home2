@@ -4,12 +4,8 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
-import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -21,24 +17,17 @@ import Collapse from "@mui/material/Collapse";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import SendIcon from "@mui/icons-material/Send";
-import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
-import { ModifiedDrawer } from "./style";
+import { Divider } from "@mui/material";
 
-const pages = ["Home", "About", "Events", "Labs", "Contact"];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import NVCTILogo from "../../assets/nvcti-transparent.png";
+import G20Logo from "../../assets/g20logo.jpg";
+import IITISMLogo from "../../assets/iitism.png";
+
+import { ModifiedDrawer, ModifiendAppBar } from "./style";
 
 const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   const [openAbout, setOpenAbout] = useState(false);
   const [openLabs, setOpenLabs] = useState(false);
   const [openAboutSmall, setOpenAboutSmall] = useState(false);
@@ -46,19 +35,46 @@ const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   return (
-    <AppBar
-      position="static"
-      sx={{
-        backgroundColor: "white",
-        color: "black",
-        boxShadow: "none",
-        pt: "0",
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <ModifiendAppBar position="static">
+      <Container
+        maxWidth="xl"
+        sx={{
+          display: "flex",
+          px: "0 !important",
+          justifyContent: "space-between    ",
+        }}
+      >
+        {/* LOGO BOX */}
+        <Box>
+          <div className="logo-div">
+            <img className="logo-img" src={NVCTILogo} alt="NVCTI" />
+            <Divider
+              className="breakpont-hidden"
+              orientation="vertical"
+              flexItem
+            />
+            <img
+              className="logo-img breakpont-hidden"
+              src={IITISMLogo}
+              alt="IIT ISM"
+            />
+            <Divider
+              className="breakpont-hidden"
+              orientation="vertical"
+              flexItem
+            />
+            <img
+              className="logo-img breakpont-hidden"
+              src={G20Logo}
+              alt="G20"
+            />
+          </div>
+          <div></div>
+        </Box>
+        {/* LINKS BOX */}
+        <Box disableGutters>
           {/* SMALL SCREEN NAVBAR */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -149,6 +165,28 @@ const Navbar = () => {
                   <ListItemButton sx={{ my: "1rem" }}>
                     <ListItemText primary="Contact" />
                   </ListItemButton>
+                  <ListItemButton
+                    sx={{
+                      my: "1rem",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Button variant="contained" fullWidth>
+                      Login
+                    </Button>
+                  </ListItemButton>
+                  <ListItemButton
+                    sx={{
+                      my: "1rem",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Button variant="contained" fullWidth>
+                      Register
+                    </Button>
+                  </ListItemButton>
                 </List>
               </Box>
             </ModifiedDrawer>
@@ -156,16 +194,13 @@ const Navbar = () => {
           {/* NORMAL NAVBAR */}
           <Box
             sx={{
-              display: { xs: "none", sm: "flex" },
+              display: { xs: "none", md: "flex" },
               justifyContent: "center",
               width: "100%",
               gap: "2em",
             }}
           >
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-            >
+            <Button sx={{ my: 2, color: "black", display: "block" }}>
               Home
             </Button>
             <Box
@@ -209,10 +244,7 @@ const Navbar = () => {
                 </List>
               </Collapse>
             </Box>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-            >
+            <Button sx={{ my: 2, color: "black", display: "block" }}>
               events
             </Button>
             <Box
@@ -254,16 +286,31 @@ const Navbar = () => {
                 </List>
               </Collapse>
             </Box>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-            >
+            <Button sx={{ my: 2, color: "black", display: "block" }}>
               contact
             </Button>
           </Box>
-        </Toolbar>
+        </Box>
+        <Box
+          className="breakpont-hidden"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            variant="contained"
+            sx={{ mr: "0.5rem", height: "max-content" }}
+          >
+            Login
+          </Button>
+          <Button variant="contained" sx={{ height: "max-content" }}>
+            Register
+          </Button>
+        </Box>
       </Container>
-    </AppBar>
+    </ModifiendAppBar>
   );
 };
 
